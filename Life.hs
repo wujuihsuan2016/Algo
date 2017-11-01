@@ -1,6 +1,5 @@
 import System.Environment
 import Data.List
-import Data.Char (chr)
 import qualified Data.Set as Set
 import Control.Monad
 
@@ -61,8 +60,7 @@ main = do
     allLines <- liftM lines $ readFile $ file
     let n = read . head $ allLines
     let live = map (\(x:y:_) -> (read x, read y)) (map words $ tail allLines)
-    putStrLn "Game of life"
+	putStrLn "Conway's Game of life"
     putStrLn "Number of steps of simulation: "
     k <- getLine
     simulation (n, live) (read k)
-

@@ -2,7 +2,6 @@ import Data.List
 
 type Cell = (Int, Int)
 type Board = ([Cell], Cell, Direction)  -- (Black cells, position of the ant, direction)
-
 data Direction = N | E | S | W
 
 printBoard :: Board -> Int -> IO ()
@@ -43,12 +42,12 @@ simulation (blackCells, currCell, dir)
       let newdir = right dir in
       (currCell:blackCells, nextCell currCell newdir, newdir)
 
-simulationLandon :: Board -> Int ->  Int -> IO ()
-simulationLandon board n k = case k of
+simulationLangton :: Board -> Int ->  Int -> IO ()
+simulationLangton board n k = case k of
   0 -> return ()
   otherwise -> do
     printBoard board n
-    simulationLandon (simulation board) n (k-1)
+    simulationLangton (simulation board) n (k-1)
 
 initBoard :: Board
 initBoard = ([], (0,0), N)
@@ -60,4 +59,4 @@ main = do
   putStrLn "Size of the board: (the board will be {(i,j) | -n <= i,j <= n})"
   n <- getLine
   let board = initBoard
-  simulationLandon board (read n) (read k)
+  simulationLangton board (read n) (read k)
