@@ -56,11 +56,11 @@ simulation board k = do
            simulation (evolution board) (k-1)
 
 main = do
-    (file:_) <- getArgs
-    allLines <- liftM lines $ readFile $ file
-    let n = read . head $ allLines
-    let live = map (\(x:y:_) -> (read x, read y)) (map words $ tail allLines)
-	putStrLn "Conway's Game of life"
-    putStrLn "Number of steps of simulation: "
-    k <- getLine
+  (file:_) <- getArgs
+  allLines <- liftM lines $ readFile $ file
+  let n = read . head $ allLines
+  let live = map (\(x:y:_) -> (read x, read y)) (map words $ tail allLines)
+  putStrLn "Conway's Game of life"
+  putStrLn "Number of steps of simulation: "
+  k <- getLine
     simulation (n, live) (read k)
