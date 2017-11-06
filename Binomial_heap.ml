@@ -5,7 +5,9 @@ end
 
 module Make(X : Ordered) = struct
   
-  type t = Node of int * X.t * t list
+  type t' = Node of int * X.t * t' list
+  
+  type t = t' list
 
   exception Empty
 
